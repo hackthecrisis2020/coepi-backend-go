@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    //let c = Central(delegate: <#CentralDelegate#>)
     var body: some View {
         Text("Hello, World!")
     }

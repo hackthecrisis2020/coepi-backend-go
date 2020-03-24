@@ -21,6 +21,7 @@
 		2A3A5B7D242932A400E3F0E0 /* DataRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5B7C242932A400E3F0E0 /* DataRepresentable.swift */; };
 		2A3A5B7F242932D900E3F0E0 /* Central.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5B7E242932D900E3F0E0 /* Central.swift */; };
 		2A3A5B81242932F600E3F0E0 /* BLEDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5B80242932F600E3F0E0 /* BLEDiscovery.swift */; };
+		2A3A5B84242945CF00E3F0E0 /* WolkCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5B83242945CF00E3F0E0 /* WolkCentral.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		2A3A5B7C242932A400E3F0E0 /* DataRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepresentable.swift; sourceTree = "<group>"; };
 		2A3A5B7E242932D900E3F0E0 /* Central.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Central.swift; sourceTree = "<group>"; };
 		2A3A5B80242932F600E3F0E0 /* BLEDiscovery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEDiscovery.swift; sourceTree = "<group>"; };
+		2A3A5B83242945CF00E3F0E0 /* WolkCentral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WolkCentral.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		2A3A5B50242930B800E3F0E0 /* coepiios */ = {
 			isa = PBXGroup;
 			children = (
+				2A3A5B82242945B100E3F0E0 /* wolkBLE */,
 				2A3A5B73242931D500E3F0E0 /* ble */,
 				2A3A5B51242930B800E3F0E0 /* AppDelegate.swift */,
 				2A3A5B53242930B800E3F0E0 /* SceneDelegate.swift */,
@@ -134,6 +137,14 @@
 				2A3A5B74242931F400E3F0E0 /* uuids.swift */,
 			);
 			path = ble;
+			sourceTree = "<group>";
+		};
+		2A3A5B82242945B100E3F0E0 /* wolkBLE */ = {
+			isa = PBXGroup;
+			children = (
+				2A3A5B83242945CF00E3F0E0 /* WolkCentral.swift */,
+			);
+			path = wolkBLE;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +257,7 @@
 				2A3A5B772429322200E3F0E0 /* Types+DataRepresentable.swift in Sources */,
 				2A3A5B7B2429328200E3F0E0 /* Peripheral.swift in Sources */,
 				2A3A5B56242930B800E3F0E0 /* ContentView.swift in Sources */,
+				2A3A5B84242945CF00E3F0E0 /* WolkCentral.swift in Sources */,
 				2A3A5B7D242932A400E3F0E0 /* DataRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

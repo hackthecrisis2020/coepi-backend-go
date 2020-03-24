@@ -31,6 +31,7 @@ class Peripheral: NSObject {
     }
 
     private func startAdvertising() {
+      print("advertising started")
         let service = createService()
         peripheralManager.add(service)
 
@@ -120,10 +121,4 @@ extension Peripheral: CBPeripheralManagerDelegate {
             isPotentiallyInfectious: true
         ))
     }
-}
-
-struct Contact {
-    let identifier: UUID
-    let timestamp: Date
-    let isPotentiallyInfectious: Bool
 }

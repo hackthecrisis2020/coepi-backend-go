@@ -89,7 +89,7 @@ class Central: NSObject {
         self.delegate = delegate
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
-
+        
         // macCatalyst apps do not need background support.
         // watchOS apps do not have background tasks.
         #if canImport(UIKit) && !targetEnvironment(macCatalyst) && !os(watchOS)
@@ -193,7 +193,7 @@ class Central: NSObject {
             repeats: false
         )
         timer.tolerance = 0.5
-        RunLoop.main.add(timer, forMode: .common)
+      RunLoop.main.add(timer, forMode: .common)
         connectingTimeoutTimersForPeripheralIdentifiers[peripheral.identifier]?.invalidate()
         connectingTimeoutTimersForPeripheralIdentifiers[peripheral.identifier] = timer
     }
