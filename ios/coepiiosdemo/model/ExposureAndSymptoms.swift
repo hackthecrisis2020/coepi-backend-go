@@ -30,5 +30,5 @@ import Foundation
 
 struct ExposureAndSymptoms : Codable {
   var symptoms: String
-  var contacts: [Contact]
+  var contacts: [CEN]
 }

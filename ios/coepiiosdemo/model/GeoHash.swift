@@ -28,10 +28,6 @@
 
 import Foundation
 
-struct Contact : Codable {
-  let identifier: UUID
-  let timestamp: Date
-  let isPotentiallyInfectious: Bool
-  let latitude: Double? = nil
-  let longitude: Double? = nil
+struct GeoHash : Codable {
+  
 }

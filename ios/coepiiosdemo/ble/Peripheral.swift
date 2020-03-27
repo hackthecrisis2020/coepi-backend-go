@@ -4,7 +4,7 @@ import os.log
 
 protocol PeripheralDelegate: class {
     func onPeripheralStateChange(description: String)
-    func onPeripheralContact(_ contact: Contact)
+    func onPeripheralContact(_ contact: CEN)
 }
 
 class Peripheral: NSObject {
@@ -23,6 +23,7 @@ class Peripheral: NSObject {
     }
 
     private func startAdvertising() {
+        print("calling startAdvertising")
         let service = createService()
         peripheralManager.add(service)
 
@@ -56,17 +57,17 @@ extension Peripheral: CBPeripheralManagerDelegate {
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         switch peripheral.state {
         case .unknown:
-            report(state: "unknown")
+            report(state: "peripheral.state unknown")
         case .unsupported:
-            report(state: "unsupported")
+            report(state: "peripheral.state unsupported")
         case .unauthorized:
-            report(state: "unauthorized")
+            report(state: "peripheral.state unauthorized")
         case .resetting:
-            report(state: "resetting")
+            report(state: "peripheral.state resetting")
         case .poweredOff:
-            report(state: "poweredOff")
+            report(state: "peripheral.state poweredOff")
         case .poweredOn:
-            report(state: "poweredOn")
+            report(state: "peripheral.state poweredOn")
             startAdvertising()
         @unknown default:
             os_log("Peripheral state: unknown")
@@ -94,24 +95,31 @@ extension Peripheral: CBPeripheralManagerDelegate {
     }
 
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
-        os_log("Peripheral manager did receive read request: %@", request.description)
-
-        let identifier = UUID()
-        addNewContactEvent(with: identifier)
-        request.value = identifier.dataRepresentation
+        os_log("Peripheral manager did receive read request: %@", log: blePeripheralLog, request.description)
+        
+        let currentTimestamp = Int(Date().timeIntervalSince1970)
+        let currentCENKey = CENKey.generateAndStoreCENKey()
+        let CENData: Data = CEN.generateCENData(CENKey: currentCENKey.cenKey!, currentTs: currentTimestamp)
+        //*** Scenario 1: https://docs.google.com/document/d/1f65V3PI214-uYfZLUZtm55kdVwoazIMqGJrxcYNI4eg/edit#
+        // iOS - Central + iOS - Peripheral -- so commenting out addNewContact
+        //addNewContactEvent(with: identifier)
+        request.value = CENData
         peripheral.respond(to: request, withResult: .success)
-
-        os_log("Peripheral manager did respond to read request with result: %d", CBATTError.success.rawValue)
+        
+        os_log("Peripheral manager did respond to read request with result: %d", log: blePeripheralLog, CBATTError.success.rawValue)
     }
-
-    private func addNewContactEvent(with identifier: UUID) {
-        delegate?.onPeripheralContact(Contact(
+    
+    /* TODO: Later
+    private func addNewContactEvent(with identifier: String) {
+        print("PERIPHERAL: addNewContactEvent called")
+        delegate?.onPeripheralContact(CEN(
             identifier: identifier,
             timestamp: Date(),
             // TODO preference, from React Native
             isPotentiallyInfectious: true
         ))
     }
+    */
 }
 //
 //struct Contact {

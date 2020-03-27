@@ -29,5 +29,5 @@
 import Foundation
 
 struct ExposureCheck : Codable {
-  var contacts: [Contact]
+  var contacts: [CEN]
 }

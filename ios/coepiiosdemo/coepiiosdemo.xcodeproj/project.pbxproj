@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07FFC7DE7420FE21A6A7C651 /* Pods_coepiiosdemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B0388C01B2392C24DDE6893 /* Pods_coepiiosdemoTests.framework */; };
 		2A3A5BB4242A97FB00E3F0E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5BB3242A97FB00E3F0E0 /* AppDelegate.swift */; };
 		2A3A5BB6242A97FB00E3F0E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5BB5242A97FB00E3F0E0 /* SceneDelegate.swift */; };
 		2A3A5BB8242A97FB00E3F0E0 /* CoEpiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5BB7242A97FB00E3F0E0 /* CoEpiViewController.swift */; };
@@ -23,10 +24,18 @@
 		2A3A5BEA242A9BEE00E3F0E0 /* ExposureAndSymptoms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5BE4242A9BEE00E3F0E0 /* ExposureAndSymptoms.swift */; };
 		2A3A5BEB242A9BEE00E3F0E0 /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5BE5242A9BEE00E3F0E0 /* Symptom.swift */; };
 		2A3A5BEC242A9BEE00E3F0E0 /* Exposure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5BE6242A9BEE00E3F0E0 /* Exposure.swift */; };
-		2A3A5BED242A9BEE00E3F0E0 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5BE7242A9BEE00E3F0E0 /* Contact.swift */; };
+		2A3A5BED242A9BEE00E3F0E0 /* CEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5BE7242A9BEE00E3F0E0 /* CEN.swift */; };
 		2A3A5BEE242A9BEE00E3F0E0 /* ExposureCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5BE8242A9BEE00E3F0E0 /* ExposureCheck.swift */; };
 		2A3A5BEF242A9BEE00E3F0E0 /* ExposureCheckResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5BE9242A9BEE00E3F0E0 /* ExposureCheckResponse.swift */; };
 		2A3A5BF2242A9CE400E3F0E0 /* CoEpiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5BF1242A9CE400E3F0E0 /* CoEpiAPI.swift */; };
+		2A3A5BF4242AC6E500E3F0E0 /* CENReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5BF3242AC6E500E3F0E0 /* CENReport.swift */; };
+		2A3A5BF6242ACC5200E3F0E0 /* GeoHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A5BF5242ACC5200E3F0E0 /* GeoHash.swift */; };
+		2A93AD23242D14F900FE8888 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93AD22242D14F900FE8888 /* ContactTableViewCell.swift */; };
+		2AAFC08D242D4D18008E7129 /* DBCEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFC08C242D4D18008E7129 /* DBCEN.swift */; };
+		2AAFC08F242D673D008E7129 /* CENKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFC08E242D673D008E7129 /* CENKey.swift */; };
+		2AAFC091242D730B008E7129 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFC090242D730B008E7129 /* Utils.swift */; };
+		2AAFC093242DD0E9008E7129 /* DBCENKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFC092242DD0E8008E7129 /* DBCENKey.swift */; };
+		FDDE5AEACBA138713FB5F192 /* Pods_coepiiosdemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF9392C84B5964B32A3D3BF /* Pods_coepiiosdemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,10 +69,23 @@
 		2A3A5BE4242A9BEE00E3F0E0 /* ExposureAndSymptoms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExposureAndSymptoms.swift; path = model/ExposureAndSymptoms.swift; sourceTree = SOURCE_ROOT; };
 		2A3A5BE5242A9BEE00E3F0E0 /* Symptom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Symptom.swift; path = model/Symptom.swift; sourceTree = SOURCE_ROOT; };
 		2A3A5BE6242A9BEE00E3F0E0 /* Exposure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Exposure.swift; path = model/Exposure.swift; sourceTree = SOURCE_ROOT; };
-		2A3A5BE7242A9BEE00E3F0E0 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contact.swift; path = model/Contact.swift; sourceTree = SOURCE_ROOT; };
+		2A3A5BE7242A9BEE00E3F0E0 /* CEN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CEN.swift; path = model/CEN.swift; sourceTree = SOURCE_ROOT; };
 		2A3A5BE8242A9BEE00E3F0E0 /* ExposureCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExposureCheck.swift; path = model/ExposureCheck.swift; sourceTree = SOURCE_ROOT; };
 		2A3A5BE9242A9BEE00E3F0E0 /* ExposureCheckResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExposureCheckResponse.swift; path = model/ExposureCheckResponse.swift; sourceTree = SOURCE_ROOT; };
 		2A3A5BF1242A9CE400E3F0E0 /* CoEpiAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoEpiAPI.swift; sourceTree = "<group>"; };
+		2A3A5BF3242AC6E500E3F0E0 /* CENReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CENReport.swift; sourceTree = "<group>"; };
+		2A3A5BF5242ACC5200E3F0E0 /* GeoHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoHash.swift; sourceTree = "<group>"; };
+		2A93AD22242D14F900FE8888 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		2AAFC08C242D4D18008E7129 /* DBCEN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBCEN.swift; sourceTree = "<group>"; };
+		2AAFC08E242D673D008E7129 /* CENKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CENKey.swift; sourceTree = "<group>"; };
+		2AAFC090242D730B008E7129 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		2AAFC092242DD0E8008E7129 /* DBCENKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBCENKey.swift; sourceTree = "<group>"; };
+		2FF9392C84B5964B32A3D3BF /* Pods_coepiiosdemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_coepiiosdemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		492ECF0EDE21CB7FD9A6182E /* Pods-coepiiosdemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coepiiosdemo.release.xcconfig"; path = "Target Support Files/Pods-coepiiosdemo/Pods-coepiiosdemo.release.xcconfig"; sourceTree = "<group>"; };
+		7B0388C01B2392C24DDE6893 /* Pods_coepiiosdemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_coepiiosdemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA469D491EE68B314AE58A1F /* Pods-coepiiosdemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coepiiosdemoTests.release.xcconfig"; path = "Target Support Files/Pods-coepiiosdemoTests/Pods-coepiiosdemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		D97AD297E16313D12988BA74 /* Pods-coepiiosdemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coepiiosdemoTests.debug.xcconfig"; path = "Target Support Files/Pods-coepiiosdemoTests/Pods-coepiiosdemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EDEAE838FAC1E052E8EDB676 /* Pods-coepiiosdemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coepiiosdemo.debug.xcconfig"; path = "Target Support Files/Pods-coepiiosdemo/Pods-coepiiosdemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDDE5AEACBA138713FB5F192 /* Pods_coepiiosdemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,12 +101,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07FFC7DE7420FE21A6A7C651 /* Pods_coepiiosdemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B82B3CA5918374655406E23 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EDEAE838FAC1E052E8EDB676 /* Pods-coepiiosdemo.debug.xcconfig */,
+				492ECF0EDE21CB7FD9A6182E /* Pods-coepiiosdemo.release.xcconfig */,
+				D97AD297E16313D12988BA74 /* Pods-coepiiosdemoTests.debug.xcconfig */,
+				AA469D491EE68B314AE58A1F /* Pods-coepiiosdemoTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		2A3A5BA7242A97FB00E3F0E0 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +128,8 @@
 				2A3A5BB2242A97FB00E3F0E0 /* coepiiosdemo */,
 				2A3A5BC9242A97FE00E3F0E0 /* coepiiosdemoTests */,
 				2A3A5BB1242A97FB00E3F0E0 /* Products */,
+				0B82B3CA5918374655406E23 /* Pods */,
+				3F8E74BAA8DA5241B73DA2C5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +148,7 @@
 				2A3A5BB3242A97FB00E3F0E0 /* AppDelegate.swift */,
 				2A3A5BB5242A97FB00E3F0E0 /* SceneDelegate.swift */,
 				2A3A5BB7242A97FB00E3F0E0 /* CoEpiViewController.swift */,
+				2A93AD22242D14F900FE8888 /* ContactTableViewCell.swift */,
 				2A3A5BB9242A97FB00E3F0E0 /* Main.storyboard */,
 				2A3A5BBC242A97FD00E3F0E0 /* Assets.xcassets */,
 				2A3A5BBE242A97FD00E3F0E0 /* LaunchScreen.storyboard */,
@@ -144,12 +182,18 @@
 		2A3A5BE3242A9B4600E3F0E0 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				2A3A5BE7242A9BEE00E3F0E0 /* Contact.swift */,
+				2A3A5BE7242A9BEE00E3F0E0 /* CEN.swift */,
+				2AAFC08E242D673D008E7129 /* CENKey.swift */,
+				2A3A5BF3242AC6E500E3F0E0 /* CENReport.swift */,
+				2AAFC08C242D4D18008E7129 /* DBCEN.swift */,
+				2AAFC092242DD0E8008E7129 /* DBCENKey.swift */,
 				2A3A5BE6242A9BEE00E3F0E0 /* Exposure.swift */,
 				2A3A5BE4242A9BEE00E3F0E0 /* ExposureAndSymptoms.swift */,
 				2A3A5BE8242A9BEE00E3F0E0 /* ExposureCheck.swift */,
 				2A3A5BE9242A9BEE00E3F0E0 /* ExposureCheckResponse.swift */,
+				2A3A5BF5242ACC5200E3F0E0 /* GeoHash.swift */,
 				2A3A5BE5242A9BEE00E3F0E0 /* Symptom.swift */,
+				2AAFC090242D730B008E7129 /* Utils.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -162,6 +206,15 @@
 			path = coepiservices;
 			sourceTree = "<group>";
 		};
+		3F8E74BAA8DA5241B73DA2C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2FF9392C84B5964B32A3D3BF /* Pods_coepiiosdemo.framework */,
+				7B0388C01B2392C24DDE6893 /* Pods_coepiiosdemoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -169,9 +222,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A3A5BCF242A97FE00E3F0E0 /* Build configuration list for PBXNativeTarget "coepiiosdemo" */;
 			buildPhases = (
+				A48EE6B47B813970BAC75C61 /* [CP] Check Pods Manifest.lock */,
 				2A3A5BAC242A97FB00E3F0E0 /* Sources */,
 				2A3A5BAD242A97FB00E3F0E0 /* Frameworks */,
 				2A3A5BAE242A97FB00E3F0E0 /* Resources */,
+				64225DDD1D2E4F31801D3607 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -186,6 +241,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A3A5BD2242A97FE00E3F0E0 /* Build configuration list for PBXNativeTarget "coepiiosdemoTests" */;
 			buildPhases = (
+				45FA0B9C65D010720DEE96FD /* [CP] Check Pods Manifest.lock */,
 				2A3A5BC2242A97FE00E3F0E0 /* Sources */,
 				2A3A5BC3242A97FE00E3F0E0 /* Frameworks */,
 				2A3A5BC4242A97FE00E3F0E0 /* Resources */,
@@ -258,24 +314,95 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		45FA0B9C65D010720DEE96FD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-coepiiosdemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		64225DDD1D2E4F31801D3607 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-coepiiosdemo/Pods-coepiiosdemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-coepiiosdemo/Pods-coepiiosdemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-coepiiosdemo/Pods-coepiiosdemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A48EE6B47B813970BAC75C61 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-coepiiosdemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2A3A5BAC242A97FB00E3F0E0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A3A5BED242A9BEE00E3F0E0 /* Contact.swift in Sources */,
+				2A3A5BED242A9BEE00E3F0E0 /* CEN.swift in Sources */,
 				2A3A5BEC242A9BEE00E3F0E0 /* Exposure.swift in Sources */,
 				2A3A5BDD242A997000E3F0E0 /* DataRepresentable.swift in Sources */,
 				2A3A5BB8242A97FB00E3F0E0 /* CoEpiViewController.swift in Sources */,
 				2A3A5BD7242A993C00E3F0E0 /* udids.swift in Sources */,
+				2AAFC093242DD0E9008E7129 /* DBCENKey.swift in Sources */,
 				2A3A5BB4242A97FB00E3F0E0 /* AppDelegate.swift in Sources */,
 				2A3A5BD9242A996900E3F0E0 /* LogSettings.swift in Sources */,
+				2AAFC091242D730B008E7129 /* Utils.swift in Sources */,
+				2AAFC08F242D673D008E7129 /* CENKey.swift in Sources */,
 				2A3A5BE1242A997400E3F0E0 /* Central.swift in Sources */,
 				2A3A5BEB242A9BEE00E3F0E0 /* Symptom.swift in Sources */,
+				2A3A5BF4242AC6E500E3F0E0 /* CENReport.swift in Sources */,
 				2A3A5BEF242A9BEE00E3F0E0 /* ExposureCheckResponse.swift in Sources */,
 				2A3A5BEE242A9BEE00E3F0E0 /* ExposureCheck.swift in Sources */,
+				2AAFC08D242D4D18008E7129 /* DBCEN.swift in Sources */,
 				2A3A5BDF242A997200E3F0E0 /* Peripheral.swift in Sources */,
+				2A3A5BF6242ACC5200E3F0E0 /* GeoHash.swift in Sources */,
 				2A3A5BB6242A97FB00E3F0E0 /* SceneDelegate.swift in Sources */,
+				2A93AD23242D14F900FE8888 /* ContactTableViewCell.swift in Sources */,
 				2A3A5BF2242A9CE400E3F0E0 /* CoEpiAPI.swift in Sources */,
 				2A3A5BEA242A9BEE00E3F0E0 /* ExposureAndSymptoms.swift in Sources */,
 				2A3A5BDB242A996E00E3F0E0 /* Types+DataRepresentable.swift in Sources */,
@@ -436,6 +563,7 @@
 		};
 		2A3A5BD0242A97FE00E3F0E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDEAE838FAC1E052E8EDB676 /* Pods-coepiiosdemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -454,6 +582,7 @@
 		};
 		2A3A5BD1242A97FE00E3F0E0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 492ECF0EDE21CB7FD9A6182E /* Pods-coepiiosdemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -472,6 +601,7 @@
 		};
 		2A3A5BD3242A97FE00E3F0E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D97AD297E16313D12988BA74 /* Pods-coepiiosdemoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -494,6 +624,7 @@
 		};
 		2A3A5BD4242A97FE00E3F0E0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA469D491EE68B314AE58A1F /* Pods-coepiiosdemoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

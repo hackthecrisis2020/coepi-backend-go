@@ -36,7 +36,15 @@ class CoEpiAPI {
     return "https://" + self.server + ":" + httpport + "/" + action
   }
   
-  private func sendExposureAndSymptoms(eas: ExposureAndSymptoms) {
+    private func postSymptoms(sr: CENReport) {
+      print("SymptomsReport", sr)
+      let endpoint = generateEndpoint(action: "symptoms")
+      let method = "POST"
+      let encodedEAS = try! JSONEncoder().encode(sr)
+      makeAPICall(endpoint: endpoint, method: method, body: encodedEAS)
+    }
+    
+    private func sendExposureAndSymptoms(eas: ExposureAndSymptoms) {
     print("ExposureAndSymptoms", eas)
     let endpoint = generateEndpoint(action: "exposureandsymptoms")
     let method = "POST"
@@ -54,7 +62,7 @@ class CoEpiAPI {
 
   private func makeAPICall(endpoint: String, method: String, body: Data) {
     
-     var error: Unmanaged<CFError>?
+     //var error: Unmanaged<CFError>?
      let config = URLSessionConfiguration.default
      config.waitsForConnectivity = true
      guard let URLObject = URL(string: endpoint) else {
