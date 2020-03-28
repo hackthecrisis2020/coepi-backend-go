@@ -35,6 +35,7 @@
 		2AAFC08F242D673D008E7129 /* CENKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFC08E242D673D008E7129 /* CENKey.swift */; };
 		2AAFC091242D730B008E7129 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFC090242D730B008E7129 /* Utils.swift */; };
 		2AAFC093242DD0E9008E7129 /* DBCENKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFC092242DD0E8008E7129 /* DBCENKey.swift */; };
+		2AAFC095242E6578008E7129 /* DBCENReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFC094242E6578008E7129 /* DBCENReport.swift */; };
 		FDDE5AEACBA138713FB5F192 /* Pods_coepiiosdemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF9392C84B5964B32A3D3BF /* Pods_coepiiosdemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		2AAFC08E242D673D008E7129 /* CENKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CENKey.swift; sourceTree = "<group>"; };
 		2AAFC090242D730B008E7129 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2AAFC092242DD0E8008E7129 /* DBCENKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBCENKey.swift; sourceTree = "<group>"; };
+		2AAFC094242E6578008E7129 /* DBCENReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBCENReport.swift; sourceTree = "<group>"; };
 		2FF9392C84B5964B32A3D3BF /* Pods_coepiiosdemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_coepiiosdemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		492ECF0EDE21CB7FD9A6182E /* Pods-coepiiosdemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coepiiosdemo.release.xcconfig"; path = "Target Support Files/Pods-coepiiosdemo/Pods-coepiiosdemo.release.xcconfig"; sourceTree = "<group>"; };
 		7B0388C01B2392C24DDE6893 /* Pods_coepiiosdemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_coepiiosdemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +189,7 @@
 				2A3A5BF3242AC6E500E3F0E0 /* CENReport.swift */,
 				2AAFC08C242D4D18008E7129 /* DBCEN.swift */,
 				2AAFC092242DD0E8008E7129 /* DBCENKey.swift */,
+				2AAFC094242E6578008E7129 /* DBCENReport.swift */,
 				2A3A5BE6242A9BEE00E3F0E0 /* Exposure.swift */,
 				2A3A5BE4242A9BEE00E3F0E0 /* ExposureAndSymptoms.swift */,
 				2A3A5BE8242A9BEE00E3F0E0 /* ExposureCheck.swift */,
@@ -385,6 +388,7 @@
 			files = (
 				2A3A5BED242A9BEE00E3F0E0 /* CEN.swift in Sources */,
 				2A3A5BEC242A9BEE00E3F0E0 /* Exposure.swift in Sources */,
+				2AAFC095242E6578008E7129 /* DBCENReport.swift in Sources */,
 				2A3A5BDD242A997000E3F0E0 /* DataRepresentable.swift in Sources */,
 				2A3A5BB8242A97FB00E3F0E0 /* CoEpiViewController.swift in Sources */,
 				2A3A5BD7242A993C00E3F0E0 /* udids.swift in Sources */,

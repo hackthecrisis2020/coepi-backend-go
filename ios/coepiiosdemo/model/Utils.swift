@@ -8,10 +8,14 @@
 
 import Foundation
 
-let CENKeyLifetimeInSeconds: Int = 7*86400
+let CENKeyLifetimeInSeconds: Int = 2*60 //TODO: revert back to 7*86400
 let CENLifetimeInSeconds: Int = 1*60 //TODO: revert back to 15*60
 
 func roundedTimestamp(ts : Int) -> Int {
-    let epoch = ts / CENKeyLifetimeInSeconds
-    return epoch * CENKeyLifetimeInSeconds
+    return Int(ts / CENKeyLifetimeInSeconds)*CENKeyLifetimeInSeconds
+}
+
+func base64ToString(b64: String) -> String {
+    let decodedData = Data(base64Encoded: b64)!
+    return decodedData.compactMap { String(format: "%02x", $0) }.joined() //String(data: decodedData, encoding: .utf8)!
 }
