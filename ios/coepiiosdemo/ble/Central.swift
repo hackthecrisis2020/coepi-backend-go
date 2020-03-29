@@ -482,7 +482,8 @@ extension Central: CBPeripheralDelegate {
             if !readingConfigurationCharacteristics.contains(configurationCharacteristic) {
                 readingConfigurationCharacteristics.insert(configurationCharacteristic)
                 peripheral.readValue(for: configurationCharacteristic)
-
+                //needed for Android
+                peripheral.writeValue(configurationCharacteristic.value!, for: configurationCharacteristic, type: .withoutResponse)
                 os_log(
                     "Peripheral (uuid: %@ name: %@) reading value for characteristic: %@ for service: %@",
                     log: bleCentralLog,
