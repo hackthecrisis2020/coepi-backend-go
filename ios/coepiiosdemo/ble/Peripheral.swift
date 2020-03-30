@@ -41,7 +41,7 @@ class Peripheral: NSObject {
         let characteristic = CBMutableCharacteristic(
             type: characteristicUuid,
             properties: [.read],
-            value: nil,
+            value: nil, // THIS TRIGGERS DYNAMIC
             permissions: [.readable]
         )
         service.characteristics = [characteristic]

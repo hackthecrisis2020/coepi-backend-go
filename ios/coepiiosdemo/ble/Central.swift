@@ -481,8 +481,12 @@ extension Central: CBPeripheralDelegate {
 
             if !readingConfigurationCharacteristics.contains(configurationCharacteristic) {
                 readingConfigurationCharacteristics.insert(configurationCharacteristic)
-                peripheral.readValue(for: configurationCharacteristic)
-
+                // iOS (C); iOS (P) has: C connects to P and retrieves the value of the characteristic.
+                // iOS (C); Android (P) has: C connects to P and retrieves the value of the characteristic.
+                peripheral.readValue(for: configurationCharacteristic) // value is P's Key / CEN
+                print("this char has a val of \(String(describing: configurationCharacteristic.value))")
+                peripheral.writeValue(configurationCharacteristic.value ?? Data(), for: configurationCharacteristic, type: .withResponse)  // the value written is C's Key
+                
                 os_log(
                     "Peripheral (uuid: %@ name: %@) reading value for characteristic: %@ for service: %@",
                     log: bleCentralLog,
