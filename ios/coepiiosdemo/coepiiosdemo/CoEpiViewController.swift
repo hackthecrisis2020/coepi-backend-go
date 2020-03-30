@@ -83,7 +83,7 @@ class CoEpiViewController: UIViewController, CentralDelegate, PeripheralDelegate
             print("symptomsTextData \(symptomsTextData)")
         }
         let currentUUID: String = UUID().uuidString
-        let currentTS:Int = Int(Date().timeIntervalSince1970)
+        let currentTS:Int64 = Int64(Date().timeIntervalSince1970)
         let retrievedCENKeys:[CENKey] = CENKey.getCENKeys(limit: 3) ?? []
         var retrievedCENKeysString: String = ""
         for index in 0..<retrievedCENKeys.count {

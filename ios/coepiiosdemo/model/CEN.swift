@@ -4,11 +4,11 @@ import RealmSwift
 
 struct CEN : Codable {
     var CEN: String
-    var timestamp: Int = Int(Date().timeIntervalSince1970)
+    var timestamp: Int64 = Int64(Date().timeIntervalSince1970)
     var latitude: Double? = nil
     var longitude: Double? = nil
     
-    static func generateCENData(CENKey : String, currentTs : Int)  -> Data {
+    static func generateCENData(CENKey : String, currentTs : Int64)  -> Data {
         // decode the base64 encoded key
         let decodedCENKey:Data = Data(base64Encoded: CENKey)!
         
@@ -33,7 +33,6 @@ struct CEN : Codable {
     
     func insert() -> Bool {
         let realm = try! Realm()
-        print("querying for \(self.CEN)")
         let DBCENObject = realm.objects(DBCEN.self).filter("CEN = %@", self.CEN)
         if DBCENObject.count == 0 {
             let newCEN = DBCEN(_cen: self.CEN, _ts: self.timestamp)
@@ -42,7 +41,7 @@ struct CEN : Codable {
             }
             return true
         } else {
-            print("duplicate entry: skipping")
+            //duplicate entry: skipping
             return false
         }
     }
@@ -51,13 +50,15 @@ struct CEN : Codable {
 func loadAllCENRecords() -> [CEN]? {
     let realm = try! Realm()
     let DBCENObject = realm.objects(DBCEN.self).sorted(byKeyPath: "timestamp", ascending: false)
+    return DBCENObject.map { CEN(CEN: $0.CEN, timestamp: $0.timestamp) }
+    /*
+    var newCENList:[CEN] = []
     if DBCENObject.count == 0 {
-        return nil
+        return newCENList
     } else {
-        var newCENList:[CEN] = []
         for index in 0..<DBCENObject.count {
             newCENList.append(CEN(CEN: DBCENObject[index].CEN, timestamp: DBCENObject[index].timestamp))
         }
         return newCENList
-    }
+    }*/
 }

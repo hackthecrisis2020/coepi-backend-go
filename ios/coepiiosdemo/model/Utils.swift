@@ -8,11 +8,11 @@
 
 import Foundation
 
-let CENKeyLifetimeInSeconds: Int = 2*60 //TODO: revert back to 7*86400
-let CENLifetimeInSeconds: Int = 1*60 //TODO: revert back to 15*60
+let CENKeyLifetimeInSeconds: Int64 = 2*60 //TODO: revert back to 7*86400
+let CENLifetimeInSeconds: Int64 = 1*60 //TODO: revert back to 15*60
 
-func roundedTimestamp(ts : Int) -> Int {
-    return Int(ts / CENKeyLifetimeInSeconds)*CENKeyLifetimeInSeconds
+func roundedTimestamp(ts : Int64) -> Int64 {
+    return Int64(ts / CENKeyLifetimeInSeconds)*CENKeyLifetimeInSeconds
 }
 
 func base64ToString(b64: String) -> String {

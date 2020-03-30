@@ -23,7 +23,6 @@ class Peripheral: NSObject {
     }
 
     private func startAdvertising() {
-        print("calling startAdvertising")
         let service = createService()
         peripheralManager.add(service)
 
@@ -40,7 +39,7 @@ class Peripheral: NSObject {
 
         let characteristic = CBMutableCharacteristic(
             type: characteristicUuid,
-            properties: [.read],
+            properties: [.read, .write, .writeWithoutResponse, .authenticatedSignedWrites], //We should review these options.  I included .write for testing, but I don't think we need it at all on iOS.  Just for Android.  So, should check to make sure it is set properly on Android to accept writes
             value: nil,
             permissions: [.readable]
         )
@@ -97,7 +96,7 @@ extension Peripheral: CBPeripheralManagerDelegate {
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
         os_log("Peripheral manager did receive read request: %@", log: blePeripheralLog, request.description)
         
-        let currentTimestamp = Int(Date().timeIntervalSince1970)
+        let currentTimestamp = Int64(Date().timeIntervalSince1970)
         let currentCENKey = CENKey.generateAndStoreCENKey()
         let CENData: Data = CEN.generateCENData(CENKey: currentCENKey.cenKey!, currentTs: currentTimestamp)
         //*** Scenario 1: https://docs.google.com/document/d/1f65V3PI214-uYfZLUZtm55kdVwoazIMqGJrxcYNI4eg/edit#
