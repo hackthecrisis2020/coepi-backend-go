@@ -55,6 +55,7 @@ func NewBackend(mysqlConnectionString string) (backend *Backend, err error) {
 func (backend *Backend) ProcessCENReport(cenReport *CENReport) (err error) {
 	reportData, err := json.Marshal(cenReport)
 	if err != nil {
+		fmt.Printf("ERROR: %+v Issue with cenReport: %+v", err, cenReport)
 		return err
 	}
 
@@ -62,6 +63,7 @@ func (backend *Backend) ProcessCENReport(cenReport *CENReport) (err error) {
 	sKeys := "insert into CENKeys (cenKey, reportID, reportTS) values ( ?, ?, ? ) on duplicate key update reportTS = values(reportTS)"
 	stmtKeys, err := backend.db.Prepare(sKeys)
 	if err != nil {
+		fmt.Printf("CENKeys ERROR: %+v ", err)
 		return err
 	}
 
@@ -69,6 +71,7 @@ func (backend *Backend) ProcessCENReport(cenReport *CENReport) (err error) {
 	sReport := "insert into CENReport (reportID, report, reportMimeType, reportTS) values ( ?, ?, ?, ? ) on duplicate key update report = values(report)"
 	stmtReport, err := backend.db.Prepare(sReport)
 	if err != nil {
+		fmt.Printf("CENReport ERROR: %+v ", err)
 		return err
 	}
 
@@ -81,6 +84,7 @@ func (backend *Backend) ProcessCENReport(cenReport *CENReport) (err error) {
 		if len(cenKey) > 30 && len(cenKey) <= 32 {
 			_, err = stmtKeys.Exec(cenKey, reportID, curTS)
 			if err != nil {
+				fmt.Printf("Store keys ERROR: %+v ", err)
 				return err
 			}
 		}
@@ -89,6 +93,7 @@ func (backend *Backend) ProcessCENReport(cenReport *CENReport) (err error) {
 	// store the cenreportID in cenReport table, one row per key
 	_, err = stmtReport.Exec(reportID, cenReport.Report, cenReport.ReportMimeType, curTS)
 	if err != nil {
+		fmt.Printf("Store report ERROR: %+v ", err)
 		panic(5)
 		return err
 	}

@@ -85,6 +85,9 @@ func (s *Server) Start() (err error) {
 
 	// Note: bringing the intermediate certs with CAFile into a cert pool and the tls.Config is *necessary*
 	certpool := x509.NewCertPool() // https://stackoverflow.com/questions/26719970/issues-with-tls-connection-in-golang -- instead of x509.NewCertPool()
+	if err != nil {
+		return fmt.Errorf("system cert pool %v", err)
+	}
 	pem, err := ioutil.ReadFile(CAFile)
 	if err != nil {
 		return fmt.Errorf("Failed to read client certificate authority: %v", err)
@@ -138,8 +141,11 @@ func (s *Server) postCENReportHandler(w http.ResponseWriter, r *http.Request) {
 func (s *Server) getCENReportHandler(w http.ResponseWriter, r *http.Request) {
 	cenKey := ""
 	pathpieces := strings.Split(strings.Trim(r.URL.Path, "/"), "/")
-	if len(pathpieces) >= 1 {
+	if len(pathpieces) > 1 {
 		cenKey = pathpieces[1]
+	} else {
+		http.Error(w, "Usage: Usage: /cenreport/<cenkey>", http.StatusBadRequest)
+		return
 	}
 
 	// Handle CenKey
@@ -160,13 +166,15 @@ func (s *Server) getCENReportHandler(w http.ResponseWriter, r *http.Request) {
 func (s *Server) getCENKeysHandler(w http.ResponseWriter, r *http.Request) {
 	ts := uint64(0)
 	pathpieces := strings.Split(strings.Trim(r.URL.Path, "/"), "/")
-	if len(pathpieces) >= 1 {
+	if len(pathpieces) > 1 {
 		tsa, err := strconv.Atoi(pathpieces[1])
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 		ts = uint64(tsa)
+	} else {
+		http.Error(w, "Usage: Usage: /cenkeys/<timestamp>", http.StatusBadRequest)
 	}
 
 	cenKeys, err := s.backend.ProcessGetCENKeys(ts)
