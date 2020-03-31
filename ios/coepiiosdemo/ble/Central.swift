@@ -280,7 +280,7 @@ extension Central: CBCentralManagerDelegate {
         delegate?.onDiscovered(peripheral: peripheral)
 
 //        os_log("advertisementData: %@", log: bleCentralLog, advertisementData)
-
+        
         if !discoveredPeripherals.contains(peripheral) {
             os_log(
                 "Central manager did discover new peripheral (uuid: %@ name: %@) RSSI: %d",

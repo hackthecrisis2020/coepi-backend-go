@@ -5,7 +5,7 @@ class CoEpiAPI {
   let httpport = "8080"
   
     private func generateEndpoint(action: String) -> String {
-        return "https://" + self.server + ":" + httpport + "/" + action
+        "https://" + self.server + ":" + httpport + "/" + action
     }
     
     func postCENReport(cenreport: CENReport) {

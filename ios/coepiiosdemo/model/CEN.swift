@@ -8,7 +8,8 @@ struct CEN : Codable {
     var latitude: Double? = nil
     var longitude: Double? = nil
     
-    static func generateCENData(CENKey : String, currentTs : Int64)  -> Data {
+    static func generateCENData(CENKey : String)  -> Data {
+        let currentTs : Int64 = Int64(Date().timeIntervalSince1970)
         // decode the base64 encoded key
         let decodedCENKey:Data = Data(base64Encoded: CENKey)!
         
@@ -51,14 +52,4 @@ func loadAllCENRecords() -> [CEN]? {
     let realm = try! Realm()
     let DBCENObject = realm.objects(DBCEN.self).sorted(byKeyPath: "timestamp", ascending: false)
     return DBCENObject.map { CEN(CEN: $0.CEN, timestamp: $0.timestamp) }
-    /*
-    var newCENList:[CEN] = []
-    if DBCENObject.count == 0 {
-        return newCENList
-    } else {
-        for index in 0..<DBCENObject.count {
-            newCENList.append(CEN(CEN: DBCENObject[index].CEN, timestamp: DBCENObject[index].timestamp))
-        }
-        return newCENList
-    }*/
 }
