@@ -1,30 +1,41 @@
 # CEN API Go Server
 
-This is the Go implementation of the [CEN API](https://docs.google.com/document/d/1f65V3PI214-uYfZLUZtm55kdVwoazIMqGJrxcYNI4eg/edit) for _Privacy-Preserving Distributed Contact Tracing_.
+This is the Go implementation of the CEN API for _Privacy-Preserving Distributed Contact Tracing_,
+to be used in the [CoEpi iOS](https://github.com/Co-Epi/app-ios) and [CoEpi Android](https://github.com/Co-Epi/app-android) apps and other applications following CEN protocols.
 
-Tech Lead: Sourabh Niyogi (`sourabh@wolk.com`)
+Our mission is to reduce transmission of disease, by developing applications and protocols that support
+contact tracing without loss of privacy (no identifiable information).  The CEN Protocol achieves this goal
+by combining Bluetooth Low Energy with lightweight client and server technology.
 
-The flow is as follows:`
-1. Apps use secret 128-bit AES keys (CENKeys) to broadcast CENs using BLE
+*Tech Lead*: Sourabh Niyogi (`sourabh@wolk.com`)
 
-2. CEN Apps records neighbor CENs in close proximity to the user
+The flow is as follows:
+
+1. iOS/Android Apps use secret 128-bit AES keys (CENKeys) to broadcast CENs using Bluetooth Low Energy (BLE)
+
+2. CEN Apps records neighbor CENs in close physical proximity to the user.
 
 3. Users submit symptom / infection reports and reveal the secret CENKey in their application to a CEN API endpoint, resulting in a POST to `/cenreport` endpoint with `Report`  
 
-4. Apps poll every N mins to `/cenkeys` for CEN Keys posts and matches them to CENs the user has observed.
+4. Apps poll every N mins to `/cenkeys` for CENKeys and matches them to CENs the user has observed.
 
-5. Upon match the application retrieves the report
+5. Upon match, the application retrieves the report for user action that re
 
-See also:
-* Design documents:
-* CEN API Documentation: (to be updated)
-* CEN API Endpoint: (under construction) https://cenapi.wolk.com:8080   
-* Rust Implementation:
+## Active Endpoint
+* CEN API Endpoint: (active) https://coepi.wolk.com:8080   
+* CEN API Documentation in Postman: https://documenter.getpostman.com/view/10811660/SzYXXzC8?version=latest
+
+## Documentation
+
+v2 Core Design: https://docs.google.com/document/d/1f65V3PI214-uYfZLUZtm55kdVwoazIMqGJrxcYNI4eg/edit)
+
+This design is expected be revised subject to CoEpi iOS / Android POC.
+Please provide feedback over Slack and standup.
 
 ### POST `/cenreport`
 Request Body: JSON Object - `CENReport`
 ```
-{"reportID":"1","report":"c2V2ZXJlIGZldmVyLGNvdWdoaW5nLGhhcmQgdG8gYnJlYXRoZQ==","cenKeys":"2cb87ba2f39a3119e4096cc6e04e68a8,4bb5c242916d923fe3565bd5c6b09dd3"}
+# curl -X POST "https://coepi.wolk.com:8080/cenreport/13298327ebcebe7f153b956e4596d503" -d '{"reportID":"80d2910e783ab87837b444c224a31c9745afffaaacd4fb6eacf233b5f30e3113","report":"c2V2ZXJlIGZldmVyLGNvdWdoaW5nLGhhcmQgdG8gYnJlYXRoZQ==","cenKeys":"b85c4b373adde4c66651ba63aef40f48,41371323cc938a0e3c55b0694bfd23f5","reportTimeStamp":1585622063}'
 ```
 
 ### GET `/cenkeys/<timestamp>`
@@ -33,23 +44,26 @@ Returns CENKeys from `<timestamp>` to `<timestamp-3600>` (Under consideration)
 
 Sample:
 ```
-["67f48de38f35c231e34e533649ecbfeb","b85c4b373adde4c66651ba63aef40f48"]
+# curl "https://coepi.wolk.com:8080/cenkeys"
+["13298327ebcebe7f153b956e4596d503","a6ad64cecdc9e2cf6ffb400fc71c1d62"]
 ```
 
-### POST `/cenreport/<cenkey>`
+
+
+### GET `/cenreport/<cenkey>`
 
 Returns reports associated with CENKey.
 
 Sample:
 ```
-[{"reportID":"6d68785abd6f99ea646fd7c775a14a36f7cec7635a76d3b5554908c6c3a09af5","report":"c2V2ZXJlIGZldmVyLGNvdWdoaW5nLGhhcmQgdG8gYnJlYXRoZQ==","reportTimeStamp":1585326048}]
+# curl "https://coepi.wolk.com:8080/cenreport/13298327ebcebe7f153b956e4596d503"
+[{"reportID":"338b0448df60447a23b36fd02ad5a7d8f036836e0ce52b848d3302001cc67a40","report":"c2V2ZXJlIGZldmVyLGNvdWdoaW5nLGhhcmQgdG8gYnJlYXRoZQ==","reportTimeStamp":1585622194}
 ```
 
 
 ### MySQL Setup
 
 1. After setting up your Mysql instance and updating the Default Connection strings in server.go, create tables with `cen.sql`
-```
 
 2. Check that you can (a) POST a CEN Report; (b) GET CEN Keys; (c) GET CEN Reports  with `go test -run TestBackendSimple`
 ```
@@ -155,7 +169,7 @@ Implementation:
  - The `/cenkeys` GET endpoint reads just the `CENKeys` table, requiring the index.  
  - The `/cenreport` GET endpoint reads the join between the 2 tables with the CENKey.
 
-It is expected that CDNs can replace this, with mobile applications 
+It is expected that CDNs can replace this, with mobile applications
 
 Importantly, no PII data is held in any table.
 

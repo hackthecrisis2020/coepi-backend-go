@@ -117,6 +117,7 @@ func (s *Server) postCENReportHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	r.Body.Close()
+	fmt.Printf("postCENReportHandler: %s\n", string(body))
 
 	// Parse body as CENReport
 	var payload backend.CENReport
@@ -140,6 +141,9 @@ func (s *Server) getCENReportHandler(w http.ResponseWriter, r *http.Request) {
 	pathpieces := strings.Split(strings.Trim(r.URL.Path, "/"), "/")
 	if len(pathpieces) >= 1 {
 		cenKey = pathpieces[1]
+	} else {
+		http.Error(w, "Usage: Usage: /cenreport/<cenkey>", http.StatusBadRequest)
+		return
 	}
 
 	// Handle CenKey
@@ -156,17 +160,19 @@ func (s *Server) getCENReportHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write(responsesJSON)
 }
 
-// /cenkeys/<timestamp>
+// GET /cenkeys/<timestamp>
 func (s *Server) getCENKeysHandler(w http.ResponseWriter, r *http.Request) {
 	ts := uint64(0)
 	pathpieces := strings.Split(strings.Trim(r.URL.Path, "/"), "/")
-	if len(pathpieces) >= 1 {
+	if len(pathpieces) > 1 {
 		tsa, err := strconv.Atoi(pathpieces[1])
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 		ts = uint64(tsa)
+	} else {
+		ts = uint64(time.Now().Unix()) - 3600
 	}
 
 	cenKeys, err := s.backend.ProcessGetCENKeys(ts)
