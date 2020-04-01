@@ -60,6 +60,11 @@ class CoEpiViewController: UIViewController, CentralDelegate, PeripheralDelegate
         
     }
     
+    @objc func appMovedToBackground() {
+        // do whatever event you want
+        print("app moved to bg")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -72,6 +77,14 @@ class CoEpiViewController: UIViewController, CentralDelegate, PeripheralDelegate
         
         self.contactList = loadAllCENRecords() ?? []
         SymptomsTextView.layer.borderWidth = 1
+        
+        let notificationCenter = NotificationCenter.default
+        if #available(iOS 13.0, *) {
+            notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIScene.willDeactivateNotification, object: nil)
+        } else {
+            notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+        }
+        
     }
     
     @IBAction func ReportSymptoms(_ sender: Any) {

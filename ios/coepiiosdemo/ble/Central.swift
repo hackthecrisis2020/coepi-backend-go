@@ -58,31 +58,39 @@ class Central: NSObject {
     // watchOS apps do not have background tasks.
     #if canImport(UIKit) && !targetEnvironment(macCatalyst) && !os(watchOS)
     private var backgroundTaskIdentifier: UIBackgroundTaskIdentifier?
-
+    
     private func handleConnectingConnectedPeripheralIdentifiersChange() {
+        print("calling handleConnectingConnectedPeripheralIdentifiersChange")
         #if canImport(UIKit) && !targetEnvironment(macCatalyst) && !os(watchOS)
         if connectingPeripheralIdentifiers.isEmpty &&
             connectedPeripheralIdentifiers.isEmpty {
+            print("Ending BG Task")
             endBackgroundTaskIfNeeded()
         } else {
+            print("Beginning BG Task")
             beginBackgroundTaskIfNeeded()
         }
         #endif
     }
 
     private func beginBackgroundTaskIfNeeded() {
+        print("begin BackgroundTask")
         guard backgroundTaskIdentifier == nil else { return }
-        backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask {
+        
+        backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(withName: "coepiBgTask") {
             os_log("Did expire background task", log: bleCentralLog)
             self.endBackgroundTaskIfNeeded()
         }
+        print("beginBackgroundTaskIfNeeded: identifier = \(backgroundTaskIdentifier) name = coepiBgTask")
     }
 
     private func endBackgroundTaskIfNeeded() {
+        print("endBgTaskIfNeeded")
         if let identifier = backgroundTaskIdentifier {
             backgroundTaskIdentifier = nil
             UIApplication.shared.endBackgroundTask(identifier)
         }
+        print("endBackgroundTaskIfNeeded: identifier = \(backgroundTaskIdentifier) name = coepiBgTask?")
     }
     #endif
 
