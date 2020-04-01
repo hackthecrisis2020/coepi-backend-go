@@ -6,6 +6,6 @@ Outstanding Questions:
     * iOS Central running in the background scanning for and discovering iOS Peripheral running in the foreground
     * iOS Central running in the foreground scanning for and discovering iOS Peripheral running in the background
     * iOS Central running in the foreground scanning for and discovering iOS Peripheral running in the foreground
-  - Complementary Details: Each phone is acting as a peripheral and central on each phone
+  - Complementary Details: Each phone is acting as a peripheral and central on each phone.  Could it be due to the phones each acting as both centrals and peripherals simultaneously?
 2. MAJOR: How to get Android Centrals to be able to scan and discover iOS Peripherals 
    * (We have a backup solution, but it would be more ideal to have a more direct/precise solution)
