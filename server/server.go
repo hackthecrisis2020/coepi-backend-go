@@ -108,6 +108,11 @@ func (s *Server) Start() (err error) {
 	return nil
 }
 
+func (s *Server) curtime() (t string) {
+     currentTime := time.Now()  
+     return fmt.Sprintf("%s", currentTime.Format("2006-01-02 15:04:05"))
+}
+
 // POST /cenreport
 func (s *Server) postCENReportHandler(w http.ResponseWriter, r *http.Request) {
 	// Read Post Body
@@ -117,7 +122,7 @@ func (s *Server) postCENReportHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	r.Body.Close()
-	fmt.Printf("postCENReportHandler: %s\n", string(body))
+	fmt.Printf("%s: POST /cenreport: %s\n", s.curtime(), string(body))
 	// Parse body as CENReport
 	var payload backend.CENReport
 	err = json.Unmarshal(body, &payload)
@@ -136,6 +141,8 @@ func (s *Server) postCENReportHandler(w http.ResponseWriter, r *http.Request) {
 
 // GET /cenreport/<cenkey>
 func (s *Server) getCENReportHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("%s: GET %s Request\n", s.curtime(), r.URL.Path)
+	
 	cenKey := ""
 	pathpieces := strings.Split(strings.Trim(r.URL.Path, "/"), "/")
 	if len(pathpieces) >= 1 {
@@ -155,13 +162,15 @@ func (s *Server) getCENReportHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	fmt.Printf("getCENReportHandler: %s\n", responsesJSON)
+	fmt.Printf("%s: GET %s Response: %s\n", s.curtime(), r.URL.Path, responsesJSON)
 	w.Write(responsesJSON)
 }
 
 // GET /cenkeys/<timestamp>
 func (s *Server) getCENKeysHandler(w http.ResponseWriter, r *http.Request) {
 	ts := uint64(0)
+	fmt.Printf("%s: GET %s Request: %s\n", s.curtime(), r.URL.Path)
+
 	pathpieces := strings.Split(strings.Trim(r.URL.Path, "/"), "/")
 	if len(pathpieces) > 1 {
 		tsa, err := strconv.Atoi(pathpieces[1])
@@ -184,7 +193,7 @@ func (s *Server) getCENKeysHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	fmt.Printf("genCENKeysHandler: %s\n", responsesJSON)
+	fmt.Printf("%s: GET %s Response: %s\n", s.curtime(), r.URL.Path, responsesJSON)
 	w.Write(responsesJSON)
 }
 
