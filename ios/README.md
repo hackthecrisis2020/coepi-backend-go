@@ -29,5 +29,13 @@ After this is confirmed, move device2 to the background and after 15mins+, neith
 
 Then if either device moves their app back to the foreground, the logs show that each of the functions referenced above get called almost immediately.
 
-2. MAJOR: How to get Android Centrals to be able to scan and discover iOS Peripherals 
-   * (We have a backup solution, but it would be more ideal to have a more direct/precise solution)
+2. MAJOR: How to get Android Centrals to be able to scan and discover iOS Peripherals when iOS device is in background
+   * iOS devices advertise UUIDs through the value of CBAdvertisementDataServiceUUIDsKey, when in the foreground, however, in the background, they are placed in a special “overflow” area and according to Apple's docs, they can be discovered only by an iOS device that is explicitly scanning for them. (https://developer.apple.com/library/archive/documentation/NetworkingInternetWeb/Conceptual/CoreBluetooth_concepts/CoreBluetoothBackgroundProcessingForIOSApps/PerformingTasksWhileYourAppIsInTheBackground.html)
+   
+   Is there any suggested workaround for enabling Android devices to scan for iOS devices when the iOS device is in the background?
+   
+   The following log line:
+   ```
+   https://github.com/Co-Epi/app-android/blob/develop/app/src/main/java/org/coepi/android/ble/covidwatch/BLEScanner.kt#L50
+   ```
+   Returns results that reflect an iOS device when the Android device is in the foreground or background and the iOS device is in the foreground, but as soon as the iOS device is moved to the backgroud, the results are empty ([]).
