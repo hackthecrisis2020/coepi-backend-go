@@ -27,5 +27,7 @@ https://github.com/Co-Epi/coepi-backend-go/blob/iosdev/ios/coepiiosdemo/ble/Peri
 
 After this is confirmed, move device2 to the background and after 15mins+, neither of the two above functions get called.
 
+Then if either device moves their app back to the foreground, the logs show that each of the functions referenced above get called almost immediately.
+
 2. MAJOR: How to get Android Centrals to be able to scan and discover iOS Peripherals 
    * (We have a backup solution, but it would be more ideal to have a more direct/precise solution)
