@@ -122,7 +122,9 @@ func (s *Server) postCENReportHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	r.Body.Close()
+
 	fmt.Printf("%s: POST /cenreport: %s\n", s.curtime(), string(body))
+
 	// Parse body as CENReport
 	var payload backend.CENReport
 	err = json.Unmarshal(body, &payload)
